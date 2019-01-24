@@ -33,8 +33,13 @@ public class CassandraLikeServiceTestConfiguration {
         );
     }
 
-    @Bean
-    public Session likeServiceSession() throws IOException, TTransportException {
+    @Bean(destroyMethod = "close")
+    public Session likeServiceSession(Cluster cluster) {
+        return cluster.connect("like_service");
+    }
+
+    @Bean(destroyMethod = "close")
+    public Cluster cassandraCluster() throws IOException, TTransportException {
         EmbeddedCassandraServerHelper.startEmbeddedCassandra(CASSANDRA_RNDPORT_YML_FILE);
         Cluster cluster = EmbeddedCassandraServerHelper.getCluster();
 
@@ -43,6 +48,6 @@ public class CassandraLikeServiceTestConfiguration {
             session.execute(TABLE_QUERY);
         }
 
-        return cluster.connect("like_service");
+        return cluster;
     }
 }
