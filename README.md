@@ -40,8 +40,16 @@ public interface LikeService {
 <a href="https://github.com/kotovdv/LikeService/blob/master/src/main/java/com/kotovdv/likeservice/cassandra/CassandraLikeService.java">Реализация CassandraLikeService</a>
 
 В корне проекта исполнить
+
+Для Unix
+
 ``` 
 ./gradlew clean test
+```
+
+Для Windows
+``` 
+gradlew clean test
 ```
 
 
