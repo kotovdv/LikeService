@@ -52,4 +52,6 @@ public interface LikeService {
 gradlew clean test
 ```
 
+**Версия JDK выше 1.8 не поддерживается**
+
 
